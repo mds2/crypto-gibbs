@@ -35,5 +35,10 @@ class Cipher:
             p[cycle[i-1]] = cycle[i]
         nextperm = "".join([p.get(l, l) for l in self.perm])
         return Cipher(nextperm)
+    def rand_mutation(self):
+        c = permute(self.letters)[:2]
+        return self.mutate(c)
+    
+        
     
         
