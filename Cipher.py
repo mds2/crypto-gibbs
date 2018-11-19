@@ -2,25 +2,25 @@ from random import randrange
 import random
 
 def permute(in_str):
-    a = [l for l in in_str]
+    a = [l for l in in_str.rstrip()]
     n = len(a)
     for i in range(n):
         idx = randrange(i, n)
         tmp = a[i]
         a[i] = a[idx]
         a[idx] = tmp
-    return "".join(a)
+    return "".join(a) + in_str[n:]
 
 class Cipher:
     def __init__(self, perm=None):
-        self.letters = 'abcdefghijklmnopqrstuvwxyz'
+        self.letters = 'abcdefghijklmnopqrstuvwxyz '
         if perm:
             self.perm = perm
         else:
             self.perm = permute(self.letters)
         self.f_map = {} # forward map
         self.r_map = {} # reverse map
-        for i in range(26):
+        for i in range(27):
             self.f_map[self.letters[i]] = self.perm[i]
             self.r_map[self.perm[i]] = self.letters[i]
     def scramble(self, in_str):

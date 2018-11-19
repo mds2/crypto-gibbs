@@ -6,7 +6,7 @@ import random
 
 class CryptoGibbs:
     def __init__(self, encoded_str):
-        self.letters = "abcdefghijklmnopqrstuvwxyz"
+        self.letters = "abcdefghijklmnopqrstuvwxyz "
         self.c = Cipher(self.letters)
         self.best = self.c
         self.s = encoded_str
@@ -17,6 +17,10 @@ class CryptoGibbs:
         self.p = self.get_prob_log(self.c)
         self.best_p = self.p
         print("Initial perm prob log is " + str(self.p))
+    def set_prior(self, new_prior):
+        self.prior = new_prior
+        self.best_p = self.get_prob_log(self.best)
+        self.p = self.get_prob_log(self.c)
     def get_prob_log(self, cipher):
         s = cipher.unscramble(self.s)
         fs = self.t.freqs(s, self.prior)

@@ -5,10 +5,10 @@ class TriGram:
     def __init__(self):
         self.tri_map = {}
         self.tri = ""
-        self.letters = 'abcdefghijklmnopqrstuvwxyz'
+        self.letters = 'abcdefghijklmnopqrstuvwxyz '
         print("About to ingest brown corpus")
         for w in brown.words():
-            self.ingest(w)
+            self.ingest(" " + w)
     def ingest(self, w):
         for l in w.lower():
             if not l in self.letters:
