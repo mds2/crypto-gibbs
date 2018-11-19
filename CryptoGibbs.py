@@ -32,11 +32,10 @@ class CryptoGibbs:
                 x = random.random()
             return log(x)
         for i in range(iters):
-            r1 = rand_log()
-            r2 = rand_log()
+            u = rand_log()
             candidate = self.c.rand_mutation()
             pc = self.get_prob_log(candidate)
-            if (r1 + pc > r2 + self.p):
+            if (u < pc - self.p):
                 self.c = candidate
                 self.p = pc
             if (pc > self.best_p):
