@@ -39,7 +39,7 @@ Failure example
 
 Here we try it on a scrambled message that is too short for this technique.
 
-Note, at the end of this wrong, the log likelihood of the incorrect
+Note, at the end of this sample, the log likelihood of the incorrect
 solution is higher than the log likelihood of the correct solution.
 
     >>> raw_text = " This message is probably too short "
