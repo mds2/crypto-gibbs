@@ -36,7 +36,8 @@ class Cipher:
         nextperm = "".join([p.get(l, l) for l in self.perm])
         return Cipher(nextperm)
     def rand_mutation(self):
-        c = permute(self.letters)[:2]
+        psize = random.randrange(2,5)
+        c = permute(self.letters)[:psize]
         return self.mutate(c)
     
         
