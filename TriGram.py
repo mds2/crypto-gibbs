@@ -2,13 +2,17 @@ import nltk
 from nltk.corpus import brown
 
 class TriGram:
+    tri_map = None
     def __init__(self):
-        self.tri_map = {}
+        self.tri_map = TriGram.tri_map
         self.tri = ""
         self.letters = 'abcdefghijklmnopqrstuvwxyz '
-        print("About to ingest brown corpus")
-        for w in brown.words():
-            self.ingest(" " + w)
+        if not self.tri_map:
+            print("About to ingest brown corpus")
+            self.tri_map = {}
+            for w in brown.words():
+                self.ingest(" " + w)
+            TriGram.tri_map = self.tri_map
     def ingest(self, w):
         for l in w.lower():
             if not l in self.letters:
